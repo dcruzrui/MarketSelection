@@ -1,0 +1,122 @@
+# Central configuration for the public demo.
+# - Scripts load this file automatically if it exists.
+# - Environment variables (e.g., DATA_DIR, OUTPUTS_DIR, N_RUNS) override config values.
+#
+# Tip: start here if you want to tune the workflow without editing code.
+
+paths:
+  data_dir: data/sample
+  outputs_dir: outputs
+  bg_features_csv: data/sample/bg_features_nyc.csv
+
+  # Optional overrides (leave blank to use defaults / auto-detect)
+  excluded_bg_csv: ""
+  open_space_path: ""
+  blocks_geom_path: ""
+  bg_geom_path: ""
+  bg_shp_path: ""
+
+cluster_map:
+  map_title: "NYC Block Group Suitability Map (Cluster-Based Ranking)"
+
+  apply_open_space_mask: true
+  require_open_space_mask: true
+  open_space_share_min_to_exclude: 0.60
+
+  apply_water_mask: true
+  land_share_bg_min: 0.10
+
+  # Clustering/search knobs
+  random_seed: 42
+  val_frac: 0.25
+  winsor_p: 0.01
+  pca_components_max: 6
+  k_values: [5]
+  n_sobol: 80
+
+  penalty:
+    dbi_w: 0.50
+    small_cluster_w: 0.50
+    imbalance_w: 0.10
+    min_cluster_frac: 0.01
+
+  # LocationScore weights (used to rank clusters)
+  weights:
+    share_college_plus: 0.1181
+    share_commute_60p: -0.1725
+    pop_density: 0.1198
+    occ_units_density: 0.1305
+    potbus_per_1k: 0.3039
+    median_income: 0.1552
+
+monte_carlo:
+  have_z_cols: true
+
+  # Part 1 (baseline clustering)
+  random_seed: 42
+  pca_components_max: 6
+  sobol_samples: 32
+  k_range: [6, 8, 10, 12]
+  train_frac: 0.75
+  min_cluster_size_frac: 0.012
+  min_cluster_size_min: 40
+
+  # Part 2 (stability)
+  n_runs: 100
+  top_ranks: 2
+  bootstrap_frac: 0.75
+  noise_std: 0.03
+  checkpoint_every: 10
+
+  exclude_anchor_bgs: true
+
+stress_test:
+  # Number of ladder scenarios between strict and relaxed (endpoint is excluded)
+  t_steps: 100
+  max_sites_per_scenario: 15
+
+  # Schedules are linear in t by default (strict at t=0, relaxed at t->1)
+  schedules:
+    fdr_alpha_start: 0.01
+    fdr_alpha_end: 0.10
+
+    min_pass_rate_start: 0.70
+    min_pass_rate_end: 0.40
+
+    # Select-count floor (often tied to your Monte Carlo run count)
+    min_select_start: 20
+    min_select_end: 10
+
+    demand_top: 10000
+    demand_floor: 4000
+    inv_p: 1.0
+    inv_k: 3.0
+
+    max_search_mi_base: 1.5
+    max_search_mi_scale: 1.0
+
+    min_store_buffer_start: 2.0
+    min_store_buffer_end: 0.8
+
+    min_ring_fallback_start: 1.0
+    min_ring_fallback_end: 0.5
+
+  reverse_geocode:
+    enabled: true
+    timeout_s: 6
+    sleep_s: 1.0
+
+  adjacency:
+    # If a BG shapefile is available, queen adjacency can be used.
+    use_bg_shapefile: true
+    prox_adj_radius_mi: 0.35
+
+  twins:
+    alpha: 0.05
+    require_adjacent_twin: true
+    min_adjacent_twins: 1
+    q_default: 0.85
+
+    water_exclude:
+      enabled: true
+      land_share_min: 0.20

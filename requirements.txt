@@ -1,0 +1,15 @@
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+folium
+branca
+requests
+pyyaml
+
+# Geospatial stack (may require wheels/conda depending on OS)
+geopandas
+shapely
+pyproj
+fiona

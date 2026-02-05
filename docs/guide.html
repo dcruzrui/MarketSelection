@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NYC Site Selection – Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; line-height: 1.55; max-width: 960px; }
+    h1, h2, h3 { line-height: 1.2; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 1rem 1.25rem; margin: 1rem 0; }
+    a { color: #0b57d0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { background: #f6f8fa; padding: 0.15rem 0.35rem; border-radius: 6px; }
+    pre { background: #f6f8fa; padding: .75rem 1rem; border-radius: 12px; overflow: auto; }
+    ul { margin-top: .25rem; }
+  </style>
+</head>
+<body>
+  <p><a href="./index.html">← Back to maps</a></p>
+  <h1>Guide</h1>
+  <p>
+    This page is the “what are we doing?” walkthrough. The full text version lives in <code>GUIDE.md</code> in the repo.
+  </p>
+
+  <div class="card">
+    <h2>Stage 0: Install + verify inputs</h2>
+    <p>Required file: <code>data/sample/bg_features_nyc.csv</code></p>
+    <p>Required columns: <code>GEOID_BG</code>, <code>intpt_lat</code>, <code>intpt_lon</code>, and the engineered feature set.</p>
+    <pre><code>pip install -r requirements.txt
+python scripts/run_all.py</code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Stage 1: Cluster + Rank</h2>
+    <p>Clusters BGs into profiles and ranks those profiles using a LocationScore.</p>
+    <pre><code>python scripts/GitHubClusterMapNYC.py</code></pre>
+    <p>Output: <code>outputs/BG_ECON_CLUSTER_OUT/bg_rank_map.html</code></p>
+  </div>
+
+  <div class="card">
+    <h2>Stage 2: Monte Carlo stability</h2>
+    <p>Re-fits clustering under bootstrap + noise and reports how consistently BGs land in top clusters.</p>
+    <pre><code>python scripts/GitHubMonteCarlo.py</code></pre>
+    <p>Output: <code>outputs/BG_FINALWITHCOUNT_OUT/mc_counts_bg.csv</code></p>
+  </div>
+
+  <div class="card">
+    <h2>Stage 3: Stress-Test Ladder + Twins</h2>
+    <p>Runs strict→relaxed regimes across <code>t</code>, aggregates candidates by earliest regime + frequency, enforces spacing, and builds twin matches.</p>
+    <pre><code>python scripts/GitHubStressTest.py</code></pre>
+    <p>Output: <code>outputs/RUN_*/STRESS_TEST_LADDER_BG/ALL_T_aggregated_map_bg.html</code></p>
+  </div>
+
+  <div class="card">
+    <h2>Stage 4: Publish maps to GitHub Pages</h2>
+    <p>Copies the newest maps into <code>docs/maps/</code> so they render on Pages.</p>
+    <pre><code>python scripts/publish_maps.py</code></pre>
+  </div>
+
+  <p style="opacity:.75">
+    For interpretation + troubleshooting, see <code>GUIDE.md</code>.
+  </p>
+</body>
+</html>

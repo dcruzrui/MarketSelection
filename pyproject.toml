@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nyc-site-selection-public"
+version = "0.1.0"
+description = "NYC block-group site selection – public demo (clustering + Monte Carlo + maps)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [{name = "Dressel Cruz"}]
+dependencies = [
+  "numpy",
+  "pandas",
+  "scipy",
+  "scikit-learn",
+  "matplotlib",
+  "folium",
+  "branca",
+  "requests",
+  "pyyaml",
+  "geopandas",
+  "shapely",
+  "pyproj",
+  "fiona",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

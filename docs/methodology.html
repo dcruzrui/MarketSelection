@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NYC Site Selection – Methodology</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; line-height: 1.55; max-width: 960px; }
+    h1, h2, h3 { line-height: 1.2; }
+    .pill { display:inline-block; padding: .15rem .55rem; border: 1px solid #ddd; border-radius: 999px; font-size: .85rem; margin-right:.35rem; }
+    a { color: #0b57d0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { background: #f6f8fa; padding: 0.15rem 0.35rem; border-radius: 6px; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 1rem 1.25rem; margin: 1rem 0; }
+    ul { margin-top: .25rem; }
+  </style>
+</head>
+<body>
+  <p><a href="./index.html">← Back to maps</a> | <a href="./guide.html">Guide</a> | <a href="./parameters.html">Parameters</a></p>
+  <h1>Methodology</h1>
+  <p>
+    This page summarizes what the pipeline is doing at a high level. For the detailed write‑up, see
+    <code>METHODOLOGY.md</code> and <code>CODE_GUIDE.md</code> in the repo.
+  </p>
+
+  <div class="card">
+    <h2>Pipeline overview</h2>
+    <p>
+      <span class="pill">Cluster + Rank</span>
+      <span class="pill">Monte Carlo stability</span>
+      <span class="pill">Stress‑test ladder</span>
+      <span class="pill">Spacing</span>
+      <span class="pill">Twin similarity</span>
+    </p>
+    <ol>
+      <li><b>Cluster + Rank:</b> group BGs by feature similarity (robust z‑scores), then rank clusters by a LocationScore.</li>
+      <li><b>Monte Carlo:</b> re‑fit clustering under perturbations (bootstrap + noise) to measure selection stability (pass‑rate).</li>
+      <li><b>Stress‑test ladder:</b> run strict→relaxed feasibility regimes and aggregate candidates by frequency + earliest regime.</li>
+      <li><b>Spacing:</b> enforce minimum distance to anchor BGs (public demo uses synthetic anchors).</li>
+      <li><b>Twin similarity:</b> connect candidates to the most similar anchor profile (e.g., Mahalanobis distance).</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>Key features</h2>
+    <ul>
+      <li><code>share_college_plus</code> — education attainment share</li>
+      <li><code>share_commute_60p</code> — long‑commute share</li>
+      <li><code>pop_density</code> — population per km² (BG)</li>
+      <li><code>occ_units_density</code> — occupied housing units per km²</li>
+      <li><code>potbus_per_1k</code> — “PotentialBus” per 1,000 residents (proxy for business intensity)</li>
+      <li><code>median_income</code> — median household income</li>
+    </ul>
+    <p>Most scripts operate on robust z‑scores (suffix <code>_z</code>) so variables are comparable and outliers are dampened.</p>
+  </div>
+
+  <div class="card">
+    <h2>How to interpret the maps</h2>
+    <ul>
+      <li><b>Cluster Ranking Map:</b> shows BGs colored by cluster rank (Rank 1 = most promising cluster group).</li>
+      <li><b>Stress‑Test Aggregated Map:</b> shows candidates that survive across regimes; tooltips include <i>earliest regime</i> and <i>frequency</i>.</li>
+      <li><b>Grey BGs:</b> excluded from modeling (missing data, open‑space, etc.). Water‑dominant BGs are rendered transparent so the ocean stays unshaded.</li>
+    </ul>
+  </div>
+
+  <p style="opacity:.75">
+    Run everything with <code>python scripts/run_all.py</code> and then publish maps with <code>python scripts/publish_maps.py</code>.
+  </p>
+</body>
+</html>

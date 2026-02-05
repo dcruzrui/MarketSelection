@@ -1,0 +1,923 @@
+AUDIT_DIFF_REPORT.txt
+Generated: 2026-02-03 (America/New_York)
+
+Purpose
+-------
+Verify that the GitHub-ready repo did NOT delete your original project code/data,
+except for removing personal absolute directories (path sanitization) and removing IDE metadata.
+
+Inputs compared
+---------------
+ORIGINAL ZIP: nyc-site-selection-public - GitHub.zip
+UPDATED ZIP : nyc-site-selection-public_GitHubReady_v3.zip
+
+High-level results
+------------------
+Original file count (all files): 252
+Updated  file count (all files): 270
+
+Classification (by content hash, independent of file path):
+- Unchanged but moved/renamed: 223 files
+- Modified (content changed): 6 files
+- Truly removed (no content match in updated): 14 files
+- Truly added (new content in updated): 30 files
+
+TRULY REMOVED FILES (expected)
+-----------------------------
+The following were removed from the original tree *without an identical content match* in the updated tree.
+These are expected removals/changes:
+
+A) IDE / editor metadata (safe to remove):
+  - data/sample/.idea/.gitignore
+  - data/sample/.idea/.name
+  - data/sample/.idea/inspectionProfiles/Project_Default.xml
+  - data/sample/.idea/inspectionProfiles/profiles_settings.xml
+  - data/sample/.idea/misc.xml
+  - data/sample/.idea/modules.xml
+  - data/sample/.idea/sample.iml
+  - data/sample/.idea/workspace.xml
+
+B) Files that were intentionally modified (path sanitization / config support):
+  - data/sample/BG_ECON_CLUSTER_OUT/bg_manifest.json
+    -> updated version at: examples/outputs/BG_ECON_CLUSTER_OUT/bg_manifest.json
+  - data/sample/GitHubClusterMapNYC.py
+    -> updated version at: scripts/GitHubClusterMapNYC.py
+  - data/sample/GitHubMonteCarlo.py
+    -> updated version at: scripts/GitHubMonteCarlo.py
+  - data/sample/GitHubOptimalSelection.py
+    -> updated version at: scripts/GitHubOptimalSelection.py
+  - data/sample/GitHubStressTest.py
+    -> updated version at: scripts/GitHubStressTest.py
+  - data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/run_manifest.json
+    -> updated version at: examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/run_manifest.json
+
+TRULY ADDED FILES (new repo polish + guides + config)
+----------------------------------------------------
+  + .gitignore
+  + CITATION.cff
+  + CODE_GUIDE.md
+  + CONTRIBUTING.md
+  + GUIDE.md
+  + LICENSE
+  + METHODOLOGY.md
+  + PARAMETERS.md
+  + README.md
+  + config.yaml
+  + docs/.nojekyll
+  + docs/guide.html
+  + docs/index.html
+  + docs/methodology.html
+  + docs/parameters.html
+  + environment.yml
+  + examples/outputs/BG_ECON_CLUSTER_OUT/bg_manifest.json
+  + examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/run_manifest.json
+  + outputs/.gitkeep
+  + pyproject.toml
+  + requirements.txt
+  + scripts/GitHubClusterMapNYC.py
+  + scripts/GitHubMonteCarlo.py
+  + scripts/GitHubOptimalSelection.py
+  + scripts/GitHubStressTest.py
+  + scripts/_config.py
+  + scripts/publish_maps.py
+  + scripts/run_all.py
+  + src/nyc_site_selection/__init__.py
+  + src/nyc_site_selection/__main__.py
+
+MOVED / RENAMED FILES (unchanged content)
+----------------------------------------
+These files are present in the updated repo with identical content but different paths (re-organization only).
+Showing a short sample first, then full mapping in Appendix A.
+  data/sample/BG_ECON_CLUSTER_OUT/bg_econ_results.csv  ->  examples/outputs/BG_ECON_CLUSTER_OUT/bg_econ_results.csv
+  data/sample/BG_ECON_CLUSTER_OUT/bg_rank_map.html  ->  docs/maps/bg_rank_map.html
+  data/sample/BG_ECON_CLUSTER_OUT/bg_search_history.csv  ->  examples/outputs/BG_ECON_CLUSTER_OUT/bg_search_history.csv
+  data/sample/BG_ECON_CLUSTER_OUT/excluded_blockgroups.csv  ->  examples/outputs/BG_ECON_CLUSTER_OUT/excluded_blockgroups.csv
+  data/sample/BG_FINALWITHCOUNT_OUT/block_results.csv  ->  examples/outputs/BG_FINALWITHCOUNT_OUT/block_results.csv
+  data/sample/BG_FINALWITHCOUNT_OUT/manifest_bg_mc_only.json  ->  examples/outputs/BG_FINALWITHCOUNT_OUT/manifest_bg_mc_only.json
+  data/sample/BG_FINALWITHCOUNT_OUT/mc_counts_bg.csv  ->  examples/outputs/BG_FINALWITHCOUNT_OUT/mc_counts_bg.csv
+  data/sample/BG_FINALWITHCOUNT_OUT/mc_counts_blk_style.csv  ->  examples/outputs/BG_FINALWITHCOUNT_OUT/mc_counts_blk_style.csv
+  data/sample/CLUSTER_OUT_BG_20260201_153601/block_clusters.csv  ->  examples/outputs/CLUSTER_OUT_BG_20260201_153601/block_clusters.csv
+  data/sample/CLUSTER_OUT_BG_20260201_153601/cluster_profiles.csv  ->  examples/outputs/CLUSTER_OUT_BG_20260201_153601/cluster_profiles.csv
+  data/sample/CLUSTER_OUT_BG_20260201_153601/effective_feature_weights.csv  ->  examples/outputs/CLUSTER_OUT_BG_20260201_153601/effective_feature_weights.csv
+  data/sample/CLUSTER_OUT_BG_20260201_153601/equivalent_metric_matrix.csv  ->  examples/outputs/CLUSTER_OUT_BG_20260201_153601/equivalent_metric_matrix.csv
+  data/sample/CLUSTER_OUT_BG_20260201_153601/model_artifacts.json  ->  examples/outputs/CLUSTER_OUT_BG_20260201_153601/model_artifacts.json
+  data/sample/CLUSTER_OUT_BG_20260201_153601/search_history.csv  ->  examples/outputs/CLUSTER_OUT_BG_20260201_153601/search_history.csv
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/AB_component_breakdown.csv  ->  examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/AB_component_breakdown.csv
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/AB_similarity_matches.csv  ->  examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/AB_similarity_matches.csv
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ALL_T_aggregated_blockgroups.csv  ->  examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ALL_T_aggregated_blockgroups.csv
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ALL_T_aggregated_map_bg.html  ->  docs/maps/ALL_T_aggregated_map_bg.html
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/final_shortlist_bg.csv  ->  examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/final_shortlist_bg.csv
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv  ->  examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/metrics.json  ->  examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/metrics.json
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.010/kept_blocks.csv  ->  examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.010/metrics.json  ->  examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.010/metrics.json
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.020/kept_blocks.csv  ->  examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+  data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.020/metrics.json  ->  examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.020/metrics.json
+
+MODIFIED FILE DIFFS (only substantive edits)
+-------------------------------------------
+Below are unified diffs for each file whose CONTENT changed. These diffs show that edits are limited to:
+- removing hardcoded personal absolute paths
+- adding config/env overrides for portability
+- (for manifests) sanitizing embedded output paths
+
+================================================================================
+FILE: data/sample/GitHubClusterMapNYC.py
+  -> scripts/GitHubClusterMapNYC.py
+SHA256 (original): fdc195024f7583bf045dd928a89bef6cd4d141b0b4d76fc1d2fbdf6bfb152cf7
+SHA256 (updated) : 70e703f7b41535407771c5efb22737503270371b221321bf35900582929f75af
+
+--- data/sample/GitHubClusterMapNYC.py
++++ scripts/GitHubClusterMapNYC.py
+@@ -65,14 +65,30 @@
+ 
+ warnings.filterwarnings("ignore")
+ 
++from _config import (
++    load_repo_config, cfg_get, resolve_repo_path,
++    env_or_cfg, env_or_cfg_bool, env_or_cfg_float, env_or_cfg_int, env_or_cfg_list,
++)
++
+ 
+ # =======================
+-# ====== PATHS ==========
++# ============ PATHS =====
+ # =======================
+-SCRIPT_DIR = Path(__file__).resolve().parent
+-
+-BG_FEATURES_PATH = str(SCRIPT_DIR / "bg_features_nyc.csv")  # set to your actual CSV filename
+-OUT_DIR = str(SCRIPT_DIR / "BG_ECON_CLUSTER_OUT")
++# GitHub-friendly defaults (relative paths). Override with env vars if needed:
++#   DATA_DIR=/path/to/data  OUTPUTS_DIR=/path/to/outputs  python scripts/GitHubClusterMapNYC.py
++REPO_ROOT   = Path(__file__).resolve().parents[1]
++CFG         = load_repo_config(REPO_ROOT)
++
++# Repo-relative paths with config.yaml support (env vars override config)
++DATA_DIR    = resolve_repo_path(REPO_ROOT, env_or_cfg("DATA_DIR", CFG, "paths.data_dir", "data/sample"), REPO_ROOT / "data" / "sample")
++OUTPUTS_DIR = resolve_repo_path(REPO_ROOT, env_or_cfg("OUTPUTS_DIR", CFG, "paths.outputs_dir", "outputs"), REPO_ROOT / "outputs")
++OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
++
++# Keep legacy variable name for minimal changes below:
++SCRIPT_DIR = DATA_DIR
++
++BG_FEATURES_PATH = str(resolve_repo_path(REPO_ROOT, env_or_cfg("BG_FEATURES_CSV", CFG, "paths.bg_features_csv", SCRIPT_DIR / "bg_features_nyc.csv"), SCRIPT_DIR / "bg_features_nyc.csv"))
++OUT_DIR = str(Path(os.environ.get("OUT_DIR", OUTPUTS_DIR / "BG_ECON_CLUSTER_OUT")))
+ os.makedirs(OUT_DIR, exist_ok=True)
+ 
+ # Optional: fallback BG layer (only used if we cannot find a blocks file)
+@@ -111,7 +127,7 @@
+ # =======================
+ # ===== MAP TITLE =======
+ # =======================
+-MAP_TITLE = os.environ.get("MAP_TITLE", "NYC Block Group Suitability Map (Cluster-Based Ranking)").strip()
++MAP_TITLE = str(env_or_cfg("MAP_TITLE", CFG, "cluster_map.map_title", "NYC Block Group Suitability Map (Cluster-Based Ranking)")).strip()
+ 
+ # =======================
+ # == BLOCKS GEOMETRY =====
+@@ -196,6 +212,16 @@
+     "median_income":      +0.1552,
+ }
+ 
++# Optional: override LocationScore weights from config.yaml
++_cfg_w = cfg_get(CFG, "cluster_map.weights", None)
++if isinstance(_cfg_w, dict):
++    for _k in list(BG_WEIGHTS.keys()):
++        if _k in _cfg_w:
++            try:
++                BG_WEIGHTS[_k] = float(_cfg_w[_k])
++            except Exception:
++                pass
++
+ # =======================
+ # == BG ELIGIBILITY =====
+ # =======================
+@@ -212,33 +238,33 @@
+ OPENSPACE_GEOJSON_DEFAULT_NAME = "6fc98808-ab15-43a8-bc0d-d3a906e2937e.geojson"
+ OPENSPACE_PATH_ENV = os.environ.get("OPENSPACE_PATH", "").strip()
+ 
+-OPENSPACE_SHARE_MIN_TO_EXCLUDE = float(os.environ.get("OPENSPACE_SHARE_MIN_TO_EXCLUDE", "0.60"))
+-APPLY_OPENSPACE_MASK = os.environ.get("APPLY_OPENSPACE_MASK", "1").strip().lower() not in ("0", "false", "no")
+-REQUIRE_OPENSPACE_MASK = os.environ.get("REQUIRE_OPENSPACE_MASK", "1").strip().lower() not in ("0", "false", "no")
++OPENSPACE_SHARE_MIN_TO_EXCLUDE = env_or_cfg_float("OPENSPACE_SHARE_MIN_TO_EXCLUDE", CFG, "cluster_map.open_space_share_min_to_exclude", 0.60)
++APPLY_OPENSPACE_MASK = env_or_cfg_bool("APPLY_OPENSPACE_MASK", CFG, "cluster_map.apply_open_space_mask", True)
++REQUIRE_OPENSPACE_MASK = env_or_cfg_bool("REQUIRE_OPENSPACE_MASK", CFG, "cluster_map.require_open_space_mask", True)
+ 
+ # =========================
+ # == WATER DOMINANCE MASK ==
+ # =========================
+ # Exclude BGs that are mostly water, but DO NOT drop geometry.
+ # Default: exclude if land_share_bg < 0.10 (i.e., <10% land).
+-LAND_SHARE_BG_MIN = float(os.environ.get("LAND_SHARE_BG_MIN", "0.10"))
+-APPLY_WATER_MASK = os.environ.get("APPLY_WATER_MASK", "1").strip().lower() not in ("0", "false", "no")
++LAND_SHARE_BG_MIN = env_or_cfg_float("LAND_SHARE_BG_MIN", CFG, "cluster_map.land_share_bg_min", 0.10)
++APPLY_WATER_MASK = env_or_cfg_bool("APPLY_WATER_MASK", CFG, "cluster_map.apply_water_mask", True)
+ 
+ # =======================
+ # ==== SEARCH PARAMS =====
+ # =======================
+-RANDOM_SEED = 42
+-VAL_FRAC = 0.25
+-WINSOR_P = 0.01
+-
+-PCA_COMPONENTS_MAX = 6
+-K_VALUES = [5]
+-N_SOBOL = 80
+-
+-DBI_PENALTY_W = 0.50
+-SMALLCLUST_PENALTY_W = 0.50
+-IMBALANCE_PENALTY_W = 0.10
+-MIN_CLUSTER_FRAC = 0.01
++RANDOM_SEED = env_or_cfg_int("RANDOM_SEED", CFG, "cluster_map.random_seed", 42)
++VAL_FRAC = env_or_cfg_float("VAL_FRAC", CFG, "cluster_map.val_frac", 0.25)
++WINSOR_P = env_or_cfg_float("WINSOR_P", CFG, "cluster_map.winsor_p", 0.01)
++
++PCA_COMPONENTS_MAX = env_or_cfg_int("PCA_COMPONENTS_MAX", CFG, "cluster_map.pca_components_max", 6)
++K_VALUES = env_or_cfg_list("K_VALUES", CFG, "cluster_map.k_values", [5])
++N_SOBOL = env_or_cfg_int("N_SOBOL", CFG, "cluster_map.n_sobol", 80)
++
++DBI_PENALTY_W = env_or_cfg_float("DBI_PENALTY_W", CFG, "cluster_map.penalty.dbi_w", 0.50)
++SMALLCLUST_PENALTY_W = env_or_cfg_float("SMALLCLUST_PENALTY_W", CFG, "cluster_map.penalty.small_cluster_w", 0.50)
++IMBALANCE_PENALTY_W = env_or_cfg_float("IMBALANCE_PENALTY_W", CFG, "cluster_map.penalty.imbalance_w", 0.10)
++MIN_CLUSTER_FRAC = env_or_cfg_float("MIN_CLUSTER_FRAC", CFG, "cluster_map.penalty.min_cluster_frac", 0.01)
+ 
+ # ==========================
+ # == 15 PLACEHOLDER ANCHORS
+
+================================================================================
+FILE: data/sample/GitHubMonteCarlo.py
+  -> scripts/GitHubMonteCarlo.py
+SHA256 (original): 57912c7d029b8a43ce67c0e95ea6420939658f38101d8e134abb354452433f18
+SHA256 (updated) : 3ffb53b3e534f2db6727d32d5fd531e74ffe13e72cf66ae91786fa0248520299
+
+--- data/sample/GitHubMonteCarlo.py
++++ scripts/GitHubMonteCarlo.py
+@@ -32,6 +32,7 @@
+ """
+ 
+ import os, time, json, glob, warnings
++from pathlib import Path
+ import numpy as np
+ import pandas as pd
+ 
+@@ -46,12 +47,25 @@
+ 
+ warnings.filterwarnings("ignore")
+ 
+-# =========================
+-# ====== PATHS (placeholder)
+-# =========================
+-BASE_DIR   =  "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample"       # <-- placeholder
+-BG_DATA    = os.path.join(BASE_DIR, "bg_features_nyc.csv")   # engineered BG table
+-OUT_DIR    = os.path.join(BASE_DIR, "BG_FINALWITHCOUNT_OUT")
++from _config import (
++    load_repo_config, cfg_get, resolve_repo_path,
++    env_or_cfg, env_or_cfg_bool, env_or_cfg_float, env_or_cfg_int, env_or_cfg_list,
++)
++
++# =========================
++# ============ PATHS =======
++# =========================
++# GitHub-friendly defaults (relative paths). Override with env vars if needed:
++#   DATA_DIR=/path/to/data  OUTPUTS_DIR=/path/to/outputs  python scripts/GitHubMonteCarlo.py
++REPO_ROOT   = Path(__file__).resolve().parents[1]
++CFG         = load_repo_config(REPO_ROOT)
++
++DATA_DIR    = resolve_repo_path(REPO_ROOT, env_or_cfg("DATA_DIR", CFG, "paths.data_dir", "data/sample"), REPO_ROOT / "data" / "sample")
++OUTPUTS_DIR = resolve_repo_path(REPO_ROOT, env_or_cfg("OUTPUTS_DIR", CFG, "paths.outputs_dir", "outputs"), REPO_ROOT / "outputs")
++OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
++
++BG_DATA = str(resolve_repo_path(REPO_ROOT, env_or_cfg("BG_DATA", CFG, "paths.bg_features_csv", DATA_DIR / "bg_features_nyc.csv"), DATA_DIR / "bg_features_nyc.csv"))   # engineered BG table
++OUT_DIR = str(Path(os.environ.get("OUT_DIR", OUTPUTS_DIR / "BG_FINALWITHCOUNT_OUT")))
+ os.makedirs(OUT_DIR, exist_ok=True)
+ 
+ SIM_ROOT   = os.path.join(OUT_DIR, "MC_SIM")
+@@ -67,8 +81,18 @@
+ # =========================
+ # If this file exists, every GEOID_BG listed in it is removed BEFORE Part 1 and therefore
+ # never participates in clustering, Monte Carlo, or any outputs.
++#
++# Priority:
++#  1) env var EXCLUDED_BG_CSV (explicit)
++#  2) outputs/BG_ECON_CLUSTER_OUT/excluded_blockgroups.csv (if it exists)
++#  3) examples/outputs/BG_ECON_CLUSTER_OUT/excluded_blockgroups.csv (bundled sample)
+ EXCLUDE_BG_FILE = True
+-EXCLUDED_BG_CSV = r"C:\Users\User\Desktop\JobApplications2026\nyc-site-selection-public\data\sample\BG_ECON_CLUSTER_OUT\excluded_blockgroups.csv"
++_default_excl = OUTPUTS_DIR / "BG_ECON_CLUSTER_OUT" / "excluded_blockgroups.csv"
++_examples_excl = REPO_ROOT / "examples" / "outputs" / "BG_ECON_CLUSTER_OUT" / "excluded_blockgroups.csv"
++EXCLUDED_BG_CSV = os.environ.get(
++    "EXCLUDED_BG_CSV",
++    str(_default_excl if _default_excl.exists() else _examples_excl),
++)
+ 
+ 
+ # Output controls
+@@ -84,7 +108,7 @@
+ BG_ID = "GEOID_BG"
+ 
+ # If your engineered file already contains robust z-scores:
+-HAVE_Z_COLS = True  # set False if you only have raw engineered vars and need z created here
++HAVE_Z_COLS = env_or_cfg_bool("HAVE_Z_COLS", CFG, "monte_carlo.have_z_cols", True)  # set False if you only have raw vars and need z created here
+ 
+ # Engineered (non-competition) vars (BG-level)
+ ENG_FEATS = [
+@@ -111,33 +135,43 @@
+     "potbus_per_1k":      +0.3039,
+     "median_income":      +0.1552,
+ }
++
++# Optional: override LocationScore weights from config.yaml (cluster_map.weights)
++_cfg_w = cfg_get(CFG, "cluster_map.weights", None)
++if isinstance(_cfg_w, dict):
++    for _k in list(BG_WEIGHTS.keys()):
++        if _k in _cfg_w:
++            try:
++                BG_WEIGHTS[_k] = float(_cfg_w[_k])
++            except Exception:
++                pass
+ # =========================
+ # ====== Part 1 clustering params (mirror)
+ # =========================
+-RANDOM_SEED = 42
+-PCA_COMPONENTS_MAX = 6
+-
+-SOBOL_SAMPLES = 32          # original uses Sobol grid; adjust as needed
+-K_RANGE       = list(range(6, 13, 2))  # e.g., 6,8,10,12 (mirror-ish)
+-TRAIN_FRAC    = 0.75
+-
+-MIN_CLUSTER_SIZE_FRAC = 0.012
+-MIN_CLUSTER_SIZE_MIN  = 40    # NOTE: original used 500 (blocks). BGs are fewer; keep logic, adjust minimum.
++RANDOM_SEED = env_or_cfg_int("RANDOM_SEED", CFG, "monte_carlo.random_seed", 42)
++PCA_COMPONENTS_MAX = env_or_cfg_int("PCA_COMPONENTS_MAX", CFG, "monte_carlo.pca_components_max", 6)
++
++SOBOL_SAMPLES = env_or_cfg_int("SOBOL_SAMPLES", CFG, "monte_carlo.sobol_samples", 32)
++K_RANGE = env_or_cfg_list("K_RANGE", CFG, "monte_carlo.k_range", list(range(6, 13, 2)))
++TRAIN_FRAC = env_or_cfg_float("TRAIN_FRAC", CFG, "monte_carlo.train_frac", 0.75)
++
++MIN_CLUSTER_SIZE_FRAC = env_or_cfg_float("MIN_CLUSTER_SIZE_FRAC", CFG, "monte_carlo.min_cluster_size_frac", 0.012)
++MIN_CLUSTER_SIZE_MIN = env_or_cfg_int("MIN_CLUSTER_SIZE_MIN", CFG, "monte_carlo.min_cluster_size_min", 40)    # NOTE: original used 500 (blocks). BGs are fewer; keep logic, adjust minimum.
+ 
+ # =========================
+ # ====== Part 2 Monte Carlo params (mirror)
+ # =========================
+-N_RUNS         = 100
+-TOP_RANKS      = 2
+-BOOTSTRAP_FRAC = 0.75
+-NOISE_STD      = 0.03
+-
+-CHECKPOINT_EVERY = 10
++N_RUNS = env_or_cfg_int("N_RUNS", CFG, "monte_carlo.n_runs", 100)
++TOP_RANKS = env_or_cfg_int("TOP_RANKS", CFG, "monte_carlo.top_ranks", 2)
++BOOTSTRAP_FRAC = env_or_cfg_float("BOOTSTRAP_FRAC", CFG, "monte_carlo.bootstrap_frac", 0.75)
++NOISE_STD = env_or_cfg_float("NOISE_STD", CFG, "monte_carlo.noise_std", 0.03)
++
++CHECKPOINT_EVERY = env_or_cfg_int("CHECKPOINT_EVERY", CFG, "monte_carlo.checkpoint_every", 10)
+ 
+ # =========================
+ # ====== Anchor placeholders (mirror of "exclude FedEx BGs")
+ # =========================
+-EXCLUDE_ANCHOR_BGS = True
++EXCLUDE_ANCHOR_BGS = env_or_cfg_bool("EXCLUDE_ANCHOR_BGS", CFG, "monte_carlo.exclude_anchor_bgs", True)
+ 
+ # Option A placeholders — hardcoded lat/lon anchors
+ ANCHORS_15 = [
+
+================================================================================
+FILE: data/sample/GitHubOptimalSelection.py
+  -> scripts/GitHubOptimalSelection.py
+SHA256 (original): 0f07b858e4a5851632ad089df6e18b503fd0c9ef28212260e54b11095cdc2616
+SHA256 (updated) : 223812950d80fbeb1b46e1194af300e98185a92a7038e4576d0941a65c1a5884
+
+--- data/sample/GitHubOptimalSelection.py
++++ scripts/GitHubOptimalSelection.py
+@@ -1,5 +1,6 @@
+ 
+ import os, json, time, warnings
++from pathlib import Path
+ import numpy as np
+ import pandas as pd
+ 
+@@ -15,13 +16,17 @@
+ warnings.filterwarnings("ignore")
+ 
+ # ================================
+-# ========= PATHS (EDIT) =========
+-# ================================
+-BG_FEATURES_CSV = r"C:\Users\User\Desktop\JobApplications2026\nyc-site-selection-public\data\sample\bg_features_nyc.csv"
+-OUT_DIR = os.path.join(
+-    os.path.dirname(BG_FEATURES_CSV),
+-    f"CLUSTER_OUT_BG_{time.strftime('%Y%m%d_%H%M%S')}"
+-)
++# ============ PATHS =============
++# ================================
++# GitHub-friendly defaults (relative paths). Override with env vars if needed:
++#   DATA_DIR=/path/to/data  OUTPUTS_DIR=/path/to/outputs  python scripts/GitHubOptimalSelection.py
++REPO_ROOT  = Path(__file__).resolve().parents[1]
++DATA_DIR   = Path(os.environ.get("DATA_DIR", REPO_ROOT / "data" / "sample"))
++OUTPUTS_DIR = Path(os.environ.get("OUTPUTS_DIR", REPO_ROOT / "outputs"))
++OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
++
++BG_FEATURES_CSV = str(Path(os.environ.get("BG_FEATURES_CSV", DATA_DIR / "bg_features_nyc.csv")))
++OUT_DIR = str(Path(os.environ.get("OUT_DIR", OUTPUTS_DIR / f"CLUSTER_OUT_BG_{time.strftime('%Y%m%d_%H%M%S')}")))
+ os.makedirs(OUT_DIR, exist_ok=True)
+ 
+ # ================================
+
+================================================================================
+FILE: data/sample/GitHubStressTest.py
+  -> scripts/GitHubStressTest.py
+SHA256 (original): e8617d3acf55bfe75ca718eddae8e3165f1c3825cabebf65373a8d226faa789f
+SHA256 (updated) : 3182997e6cbf1074d9a30e68f486e16c9ca1dbd7f3732471a55558275668b5f3
+
+--- data/sample/GitHubStressTest.py
++++ scripts/GitHubStressTest.py
+@@ -57,6 +57,7 @@
+ """
+ 
+ import os, re, json, math, time, glob, argparse
++from pathlib import Path
+ from datetime import datetime
+ from statistics import NormalDist
+ 
+@@ -91,27 +92,44 @@
+ # USER CONFIG
+ # ============================================================
+ 
+-# If you keep this in /data/sample, default BASE_DIR to the script folder.
+-_DEFAULT_BASE = os.path.dirname(os.path.abspath(__file__))
+-
+-# You can override with an environment variable to keep the file GitHub-friendly:
+-#   set BASE_DIR=... (Windows)  OR  BASE_DIR=... python ...
+-BASE_DIR = os.environ.get("BASE_DIR", _DEFAULT_BASE)
+-
+-BG_FEATURES_CSV = os.path.join(BASE_DIR, "bg_features_nyc.csv")
++# Paths (GitHub-friendly defaults)
++# Override via env vars if you want to point at your own data/output folders:
++#   DATA_DIR=/path/to/data  OUTPUTS_DIR=/path/to/outputs  python scripts/GitHubStressTest.py
++REPO_ROOT   = Path(__file__).resolve().parents[1]
++CFG         = load_repo_config(REPO_ROOT)
++
++DATA_DIR    = resolve_repo_path(REPO_ROOT, env_or_cfg("DATA_DIR", CFG, "paths.data_dir", "data/sample"), REPO_ROOT / "data" / "sample")
++OUTPUTS_DIR = resolve_repo_path(REPO_ROOT, env_or_cfg("OUTPUTS_DIR", CFG, "paths.outputs_dir", "outputs"), REPO_ROOT / "outputs")
++OUTPUTS_DIR.mkdir(parents=True, exist_ok=True)
++
++# Keep BASE_DIR as the *data* directory for backwards compatibility with other variables below.
++BASE_DIR = os.environ.get("BASE_DIR", str(DATA_DIR))
++
++BG_FEATURES_CSV = os.environ.get("BG_FEATURES_CSV", str(DATA_DIR / "bg_features_nyc.csv"))
+ 
+ 
+ 
+ # BG MonteCarlo output folder (must contain mc_counts_bg.csv)
+-BG_MC_DIR       = os.path.join(BASE_DIR, "BG_FINALWITHCOUNT_OUT")
+-MC_COUNTS_CSV   = os.path.join(BG_MC_DIR, "mc_counts_bg.csv")
++# Priority:
++#  1) env var BG_MC_DIR (explicit)
++#  2) outputs/BG_FINALWITHCOUNT_OUT (if it exists)
++#  3) examples/outputs/BG_FINALWITHCOUNT_OUT (bundled sample)
++_examples_mc = REPO_ROOT / "examples" / "outputs" / "BG_FINALWITHCOUNT_OUT"
++_default_mc  = OUTPUTS_DIR / "BG_FINALWITHCOUNT_OUT"
++BG_MC_DIR    = os.environ.get("BG_MC_DIR", str(_default_mc if _default_mc.exists() else _examples_mc))
++MC_COUNTS_CSV = os.path.join(BG_MC_DIR, "mc_counts_bg.csv")
+ 
+ # (Optional) BG exclusion list:
+ #   Any BG listed here is removed from the universe at the very beginning (features + MC + everything downstream).
+-#   Override with env var EXCLUDED_BG_CSV to keep this GitHub-friendly.
++# Priority:
++#  1) env var EXCLUDED_BG_CSV (explicit)
++#  2) outputs/BG_ECON_CLUSTER_OUT/excluded_blockgroups.csv (if it exists)
++#  3) examples/outputs/BG_ECON_CLUSTER_OUT/excluded_blockgroups.csv (bundled sample)
++_default_excl = OUTPUTS_DIR / "BG_ECON_CLUSTER_OUT" / "excluded_blockgroups.csv"
++_examples_excl = REPO_ROOT / "examples" / "outputs" / "BG_ECON_CLUSTER_OUT" / "excluded_blockgroups.csv"
+ EXCLUDED_BG_CSV = os.environ.get(
+     "EXCLUDED_BG_CSV",
+-    os.path.join(BASE_DIR, "BG_ECON_CLUSTER_OUT", "excluded_blockgroups.csv"),
++    str(_default_excl if _default_excl.exists() else _examples_excl),
+ )
+ 
+ 
+@@ -120,7 +138,7 @@
+ #   - a .shp path, OR
+ #   - a .zip containing a shapefile set (.shp/.dbf/.shx/.prj)
+ # If None or missing, proximity adjacency is used instead and twin areas cannot be shaded.
+-BG_SHP_PATH     = None  # e.g., os.path.join(BASE_DIR, "nyc_block_groups_2021.shp")  or  "nyc_block_groups_2021.zip"
++BG_SHP_PATH = str(resolve_repo_path(REPO_ROOT, env_or_cfg("BG_SHP_PATH", CFG, "paths.bg_shp_path", DATA_DIR / "nyc_block_groups_2021.shp"), DATA_DIR / "nyc_block_groups_2021.shp"))
+ 
+ # --- Water-handling for twin shading ---
+ # BG polygons (especially near coasts/rivers) can include large water portions. Since we may not have
+@@ -132,7 +150,7 @@
+ 
+ # Output root
+ RUN_STAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
+-RUN_ROOT  = os.path.join(BASE_DIR, f"RUN_{RUN_STAMP}")
++RUN_ROOT  = os.path.join(str(OUTPUTS_DIR), f"RUN_{RUN_STAMP}")
+ LADDER_DIR_ROOT = os.path.join(RUN_ROOT, "STRESS_TEST_LADDER_BG")
+ os.makedirs(LADDER_DIR_ROOT, exist_ok=True)
+ 
+@@ -146,30 +164,63 @@
+ # -------------------------
+ # Ladder steps (mirror block-level: endpoint=False)
+ # -------------------------
+-T_STEPS = np.linspace(0.0, 1.0, 100, endpoint=False)
++T_STEPS_N = env_or_cfg_int("T_STEPS_N", CFG, "stress_test.t_steps", 100)
++T_STEPS = np.linspace(0.0, 1.0, int(T_STEPS_N), endpoint=False)
+ TOTAL_SCENARIOS = len(T_STEPS)
+ 
+ 
+ # Inferred from mc_counts_bg.csv at runtime (used to scale MIN_SELECT_COUNT_BG)
+ ELIGIBLE_RUNS_REF_BG = None
++
++# -------------------------
++# Schedule parameters (strict at t=0, relaxed as t increases)
++# -------------------------
++FDR_ALPHA_START = env_or_cfg_float("FDR_ALPHA_START", CFG, "stress_test.schedules.fdr_alpha_start", 0.01)
++FDR_ALPHA_END   = env_or_cfg_float("FDR_ALPHA_END",   CFG, "stress_test.schedules.fdr_alpha_end",   0.10)
++
++MIN_PASS_RATE_START = env_or_cfg_float("MIN_PASS_RATE_START", CFG, "stress_test.schedules.min_pass_rate_start", 0.70)
++MIN_PASS_RATE_END   = env_or_cfg_float("MIN_PASS_RATE_END",   CFG, "stress_test.schedules.min_pass_rate_end",   0.40)
++
++MIN_SELECT_START = env_or_cfg_int("MIN_SELECT_START", CFG, "stress_test.schedules.min_select_start", 20)
++MIN_SELECT_END   = env_or_cfg_int("MIN_SELECT_END",   CFG, "stress_test.schedules.min_select_end",   10)
++
++DEMAND_TOP   = env_or_cfg_int("DEMAND_TOP",   CFG, "stress_test.schedules.demand_top",   10000)
++DEMAND_FLOOR = env_or_cfg_int("DEMAND_FLOOR", CFG, "stress_test.schedules.demand_floor", 4000)
++INV_P        = env_or_cfg_float("INV_P", CFG, "stress_test.schedules.inv_p", 1.0)
++INV_K        = env_or_cfg_float("INV_K", CFG, "stress_test.schedules.inv_k", 3.0)
++
++MAX_SEARCH_MI_BASE  = env_or_cfg_float("MAX_SEARCH_MI_BASE",  CFG, "stress_test.schedules.max_search_mi_base",  1.5)
++MAX_SEARCH_MI_SCALE = env_or_cfg_float("MAX_SEARCH_MI_SCALE", CFG, "stress_test.schedules.max_search_mi_scale", 1.0)
++
++MIN_STORE_BUFFER_START = env_or_cfg_float("MIN_STORE_BUFFER_START", CFG, "stress_test.schedules.min_store_buffer_start", 2.0)
++MIN_STORE_BUFFER_END   = env_or_cfg_float("MIN_STORE_BUFFER_END",   CFG, "stress_test.schedules.min_store_buffer_end",   0.8)
++
++MIN_RING_FALLBACK_START = env_or_cfg_float("MIN_RING_FALLBACK_START", CFG, "stress_test.schedules.min_ring_fallback_start", 1.0)
++MIN_RING_FALLBACK_END   = env_or_cfg_float("MIN_RING_FALLBACK_END",   CFG, "stress_test.schedules.min_ring_fallback_end",   0.5)
++
+ # Mirror-style schedules (BG analogs; shape mirrors the original ladder)
+-def FDR_ALPHA(t):            return 0.01 + (0.09 * t)          # [0.01 .. 0.10]
+-def MIN_PASS_RATE_BG(t):     return 0.70 - (0.30 * t)          # [0.65 .. 0.30]
++def FDR_ALPHA(t):
++    return float(FDR_ALPHA_START + (FDR_ALPHA_END - FDR_ALPHA_START) * t)
++def MIN_PASS_RATE_BG(t):
++    return float(MIN_PASS_RATE_START + (MIN_PASS_RATE_END - MIN_PASS_RATE_START) * t)
+ def MIN_SELECT_COUNT_BG(t):
+     """Absolute minimum select-count threshold (BG level).
+ 
+     With 20 Monte Carlo runs, the select_count_bg ranges 0..20. We mirror the user's
+     schedule request: a linear floor that relaxes from 20 → 10 across t∈[0,1].
+     """
+-    return int(round(20 - (10 * t)))
+-
+-DEMAND_TOP, DEMAND_FLOOR, INV_P, INV_K = 10000, 4000, 1.0, 3.0
++    return int(round(MIN_SELECT_START + (MIN_SELECT_END - MIN_SELECT_START) * t))
++
++# demand schedule constants come from config.yaml (see above)
+ def TARGET_DEMAND(t):  return int(round(DEMAND_FLOOR + (DEMAND_TOP - DEMAND_FLOOR) / ((1 + INV_K * t) ** INV_P)))
+-def MAX_SEARCH_MI(t):  return 1.5 + 1.0*math.sqrt(t)           # [2.5 .. 4.0] mi
+-def MIN_STORE_BUFFER_MI(t):   return 2.0 - 1.2 * t             # [2.0 .. 0.8] mi
+-def MIN_RING_MI_FALLBACK(t):  return 1.0 - 0.5 * t             # [1.0 .. 0.5] mi
+-
+-MAX_SITES_PER_SCENARIO = 15
++def MAX_SEARCH_MI(t):
++    return float(MAX_SEARCH_MI_BASE + MAX_SEARCH_MI_SCALE * math.sqrt(t))
++def MIN_STORE_BUFFER_MI(t):
++    return float(MIN_STORE_BUFFER_START + (MIN_STORE_BUFFER_END - MIN_STORE_BUFFER_START) * t)
++def MIN_RING_MI_FALLBACK(t):
++    return float(MIN_RING_FALLBACK_START + (MIN_RING_FALLBACK_END - MIN_RING_FALLBACK_START) * t)
++
++MAX_SITES_PER_SCENARIO = env_or_cfg_int("MAX_SITES_PER_SCENARIO", CFG, "stress_test.max_sites_per_scenario", 15)
+ 
+ # -------------------------
+ # Map styling toggles (mirror block-level knobs)
+@@ -183,15 +234,15 @@
+ 
+ # Twin layer toggles
+ INCLUDE_TWIN_CLUSTERS_ALL = True
+-TWINS_ALPHA         = 0.05      # q = 1-α
++TWINS_ALPHA = env_or_cfg_float("TWINS_ALPHA", CFG, "stress_test.twins.alpha", 0.05)  # q = 1-alpha
+ TWINS_LOCAL_BY_BORO = True
+ MAX_TWIN_ANCHORS    = None      # e.g., 100
+ MIN_TWIN_CLUSTER_UNITS = 1
+ 
+ # In the original block-level script, the aggregated map can optionally require
+ # that candidates have at least one adjacent twin (by the twin threshold q).
+-REQUIRE_ADJACENT_TWIN = True
+-MIN_ADJACENT_TWINS    = 1
++REQUIRE_ADJACENT_TWIN = env_or_cfg_bool("REQUIRE_ADJACENT_TWIN", CFG, "stress_test.twins.require_adjacent_twin", True)
++MIN_ADJACENT_TWINS = env_or_cfg_int("MIN_ADJACENT_TWINS", CFG, "stress_test.twins.min_adjacent_twins", 1)
+ 
+ # Composite similarity weights (same as block script)
+ AB_WEIGHTS = {
+@@ -210,13 +261,13 @@
+ 
+ # Reverse geocoding (optional; used to display addresses in map tooltips)
+ # Set DO_REVERSE_GEOCODE=0 to disable.
+-DO_REVERSE_GEOCODE = str(os.environ.get("DO_REVERSE_GEOCODE", "1")).lower() in ("1","true","yes","y","t")
+-GEOCODE_TIMEOUT_S  = 6
+-GEOCODE_SLEEP_S    = 1.0
++DO_REVERSE_GEOCODE = env_or_cfg_bool("DO_REVERSE_GEOCODE", CFG, "stress_test.reverse_geocode.enabled", True)
++GEOCODE_TIMEOUT_S  = env_or_cfg_int("GEOCODE_TIMEOUT_S", CFG, "stress_test.reverse_geocode.timeout_s", 6)
++GEOCODE_SLEEP_S    = env_or_cfg_float("GEOCODE_SLEEP_S", CFG, "stress_test.reverse_geocode.sleep_s", 1.0)
+ GEOCODE_CACHE_JSON = os.path.join(BASE_DIR, "geocode_cache.json")
+ 
+ # If no shapefile, proximity adjacency is used:
+-PROX_ADJ_RADIUS_MI = 0.35   # tweak if you want denser/sparser neighbor graph for "contiguity"
++PROX_ADJ_RADIUS_MI = env_or_cfg_float("PROX_ADJ_RADIUS_MI", CFG, "stress_test.adjacency.prox_adj_radius_mi", 0.35)   # tweak if you want denser/sparser neighbor graph for "contiguity"
+ MAX_CLUSTER_RADIUS_MI = 1.20
+ RAY_MAX_RADIUS_MI     = MAX_CLUSTER_RADIUS_MI
+ 
+
+================================================================================
+FILE: data/sample/BG_ECON_CLUSTER_OUT/bg_manifest.json
+  -> examples/outputs/BG_ECON_CLUSTER_OUT/bg_manifest.json
+SHA256 (original): d18963610aebfa1ff430e962851e0003ca539e39468b95cbe5fadebcc9cccb91
+SHA256 (updated) : cf4a4de30a84f77f73cc73c24390a61a98e9570b693be1ac7712dceccef0aab9
+
+--- data/sample/BG_ECON_CLUSTER_OUT/bg_manifest.json
++++ examples/outputs/BG_ECON_CLUSTER_OUT/bg_manifest.json
+@@ -71,6 +71,6 @@
+     "potbus_per_1k": 0.3039,
+     "median_income": 0.1552
+   },
+-  "open_space_file": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\Parks_Properties_20260131.geojson",
+-  "blocks_file": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\nyc_blocks_only.shp"
++  "open_space_file": "data/sample\\Parks_Properties_20260131.geojson",
++  "blocks_file": "data/sample\\nyc_blocks_only.shp"
+ }
+
+================================================================================
+FILE: data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/run_manifest.json
+  -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/run_manifest.json
+SHA256 (original): f542061951de472205037f9ea89c229a4d6053d41604f03c57d34682331d52e7
+SHA256 (updated) : 90cfd737d6e38080f82e9e2bf291c14e4d282c1db7abfe79424689cf68a14d98
+
+--- data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/run_manifest.json
++++ examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/run_manifest.json
+@@ -1,10 +1,10 @@
+ {
+   "timestamp": "2026-02-02T20:20:32",
+-  "BASE_DIR": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample",
+-  "RUN_ROOT": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016",
+-  "LADDER_DIR_ROOT": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG",
+-  "BG_FEATURES_CSV": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\bg_features_nyc.csv",
+-  "MC_COUNTS_CSV": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\BG_FINALWITHCOUNT_OUT\\mc_counts_bg.csv",
++  "BASE_DIR": "data/sample",
++  "RUN_ROOT": "data/sample\\RUN_20260202_202016",
++  "LADDER_DIR_ROOT": "data/sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG",
++  "BG_FEATURES_CSV": "data/sample\\bg_features_nyc.csv",
++  "MC_COUNTS_CSV": "data/sample\\BG_FINALWITHCOUNT_OUT\\mc_counts_bg.csv",
+   "BG_SHP_PATH": null,
+   "TOTAL_SCENARIOS": 100,
+   "LAT_COL": "intpt_lat",
+@@ -72,15 +72,15 @@
+     ]
+   ],
+   "outputs": {
+-    "summary_table": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\summary_table.csv",
+-    "ALL_T_aggregated_blockgroups": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\ALL_T_aggregated_blockgroups.csv",
+-    "final_shortlist_bg": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\final_shortlist_bg.csv",
+-    "sectionA_profiles": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\sectionA_profiles.csv",
+-    "sectionB_profiles": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\sectionB_profiles.csv",
+-    "AB_component_breakdown": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\AB_component_breakdown.csv",
+-    "AB_similarity_matches": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\AB_similarity_matches.csv",
+-    "twin_cluster_sizes_mahal": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\twin_cluster_sizes_mahal.csv",
+-    "ALL_T_aggregated_map_bg": "C:\\Users\\User\\Desktop\\JobApplications2026\\nyc-site-selection-public\\data\\sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\ALL_T_aggregated_map_bg.html"
++    "summary_table": "data/sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\summary_table.csv",
++    "ALL_T_aggregated_blockgroups": "data/sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\ALL_T_aggregated_blockgroups.csv",
++    "final_shortlist_bg": "data/sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\final_shortlist_bg.csv",
++    "sectionA_profiles": "data/sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\sectionA_profiles.csv",
++    "sectionB_profiles": "data/sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\sectionB_profiles.csv",
++    "AB_component_breakdown": "data/sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\AB_component_breakdown.csv",
++    "AB_similarity_matches": "data/sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\AB_similarity_matches.csv",
++    "twin_cluster_sizes_mahal": "data/sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\twin_cluster_sizes_mahal.csv",
++    "ALL_T_aggregated_map_bg": "data/sample\\RUN_20260202_202016\\STRESS_TEST_LADDER_BG\\ALL_T_aggregated_map_bg.html"
+   },
+   "anchors_snapped_bg_ids": [
+     "360050023003",
+
+================================================================================
+
+Appendix A: Full moved/renamed mapping (unchanged content)
+----------------------------------------------------------
+data/sample/BG_ECON_CLUSTER_OUT/bg_econ_results.csv -> examples/outputs/BG_ECON_CLUSTER_OUT/bg_econ_results.csv
+data/sample/BG_ECON_CLUSTER_OUT/bg_rank_map.html -> docs/maps/bg_rank_map.html
+data/sample/BG_ECON_CLUSTER_OUT/bg_search_history.csv -> examples/outputs/BG_ECON_CLUSTER_OUT/bg_search_history.csv
+data/sample/BG_ECON_CLUSTER_OUT/excluded_blockgroups.csv -> examples/outputs/BG_ECON_CLUSTER_OUT/excluded_blockgroups.csv
+data/sample/BG_FINALWITHCOUNT_OUT/block_results.csv -> examples/outputs/BG_FINALWITHCOUNT_OUT/block_results.csv
+data/sample/BG_FINALWITHCOUNT_OUT/manifest_bg_mc_only.json -> examples/outputs/BG_FINALWITHCOUNT_OUT/manifest_bg_mc_only.json
+data/sample/BG_FINALWITHCOUNT_OUT/mc_counts_bg.csv -> examples/outputs/BG_FINALWITHCOUNT_OUT/mc_counts_bg.csv
+data/sample/BG_FINALWITHCOUNT_OUT/mc_counts_blk_style.csv -> examples/outputs/BG_FINALWITHCOUNT_OUT/mc_counts_blk_style.csv
+data/sample/CLUSTER_OUT_BG_20260201_153601/block_clusters.csv -> examples/outputs/CLUSTER_OUT_BG_20260201_153601/block_clusters.csv
+data/sample/CLUSTER_OUT_BG_20260201_153601/cluster_profiles.csv -> examples/outputs/CLUSTER_OUT_BG_20260201_153601/cluster_profiles.csv
+data/sample/CLUSTER_OUT_BG_20260201_153601/effective_feature_weights.csv -> examples/outputs/CLUSTER_OUT_BG_20260201_153601/effective_feature_weights.csv
+data/sample/CLUSTER_OUT_BG_20260201_153601/equivalent_metric_matrix.csv -> examples/outputs/CLUSTER_OUT_BG_20260201_153601/equivalent_metric_matrix.csv
+data/sample/CLUSTER_OUT_BG_20260201_153601/model_artifacts.json -> examples/outputs/CLUSTER_OUT_BG_20260201_153601/model_artifacts.json
+data/sample/CLUSTER_OUT_BG_20260201_153601/search_history.csv -> examples/outputs/CLUSTER_OUT_BG_20260201_153601/search_history.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/AB_component_breakdown.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/AB_component_breakdown.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/AB_similarity_matches.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/AB_similarity_matches.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ALL_T_aggregated_blockgroups.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ALL_T_aggregated_blockgroups.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ALL_T_aggregated_map_bg.html -> docs/maps/ALL_T_aggregated_map_bg.html
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/final_shortlist_bg.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/final_shortlist_bg.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.010/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.010/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.010/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.020/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.020/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.020/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.030/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.030/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.030/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.040/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.040/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.040/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.050/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.050/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.050/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.060/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.060/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.060/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.070/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.070/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.070/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.080/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.080/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.080/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.090/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.090/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.090/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.100/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.100/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.100/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.110/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.110/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.110/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.120/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.120/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.120/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.130/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.130/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.130/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.140/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.140/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.140/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.150/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.150/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.150/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.160/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.160/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.160/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.170/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.170/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.170/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.180/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.180/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.180/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.190/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.190/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.190/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.200/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.200/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.200/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.210/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.210/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.210/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.220/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.220/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.220/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.230/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.230/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.230/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.240/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.240/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.240/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.250/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.250/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.250/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.260/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.260/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.260/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.270/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.270/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.270/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.280/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.280/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.280/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.290/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.290/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.290/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.300/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.300/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.300/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.310/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.310/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.310/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.320/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.320/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.320/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.330/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.330/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.330/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.340/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.340/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.340/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.350/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.350/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.350/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.360/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.360/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.360/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.370/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.370/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.370/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.380/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.380/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.380/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.390/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.390/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.390/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.400/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.400/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.400/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.410/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.410/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.410/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.420/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.420/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.420/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.430/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.430/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.430/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.440/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.440/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.440/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.450/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.450/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.450/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.460/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.460/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.460/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.470/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.470/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.470/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.480/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.480/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.480/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.490/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.490/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.490/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.500/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.500/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.500/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.510/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.510/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.510/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.520/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.520/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.520/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.530/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.530/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.530/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.540/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.540/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.540/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.550/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.550/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.550/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.560/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.560/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.560/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.570/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.570/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.570/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.580/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.580/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.580/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.590/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.590/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.590/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.600/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.600/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.600/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.610/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.610/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.610/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.620/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.620/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.620/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.630/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.630/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.630/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.640/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.640/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.640/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.650/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.650/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.650/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.660/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.660/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.660/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.670/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.670/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.670/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.680/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.000/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.680/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.680/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.690/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.690/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.690/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.690/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.700/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.700/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.700/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.700/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.710/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.710/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.710/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.710/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.720/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.720/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.720/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.720/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.730/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.730/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.730/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.730/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.740/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.740/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.740/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.740/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.750/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.750/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.750/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.750/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.760/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.760/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.760/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.760/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.770/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.770/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.770/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.770/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.780/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.780/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.780/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.780/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.790/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.790/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.790/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.790/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.800/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.800/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.800/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.800/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.810/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.810/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.810/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.810/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.820/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.820/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.820/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.820/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.830/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.830/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.830/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.830/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.840/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.840/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.840/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.840/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.850/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.850/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.850/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.850/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.860/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.860/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.860/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.860/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.870/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.870/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.870/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.870/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.880/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.880/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.880/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.880/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.890/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.890/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.890/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.890/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.900/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.900/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.900/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.900/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.910/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.910/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.910/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.910/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.920/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.920/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.920/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.920/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.930/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.930/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.930/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.930/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.940/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.940/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.940/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.940/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.950/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.950/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.950/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.950/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.960/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.960/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.960/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.960/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.970/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.970/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.970/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.970/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.980/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.980/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.980/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.980/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.990/kept_blocks.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.990/kept_blocks.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.990/metrics.json -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/ladder_t_0.990/metrics.json
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/sectionA_profiles.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/sectionA_profiles.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/sectionB_profiles.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/sectionB_profiles.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/summary_table.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/summary_table.csv
+data/sample/RUN_20260202_202016/STRESS_TEST_LADDER_BG/twin_cluster_sizes_mahal.csv -> examples/outputs/RUN_20260202_202016/STRESS_TEST_LADDER_BG/twin_cluster_sizes_mahal.csv
