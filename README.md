@@ -1,3 +1,5 @@
+All the interactive maps and guides: https://dcruzrui.github.io/MarketSelection/
+
 # NYC Site Selection (Public Demo)
 
 A reproducible, public-facing demo of a **NYC block‑group site selection** workflow.
