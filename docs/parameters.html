@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>NYC Site Selection – Parameters</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; line-height: 1.55; max-width: 960px; }
+    h1, h2, h3 { line-height: 1.2; }
+    .card { border: 1px solid #ddd; border-radius: 12px; padding: 1rem 1.25rem; margin: 1rem 0; }
+    a { color: #0b57d0; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    code { background: #f6f8fa; padding: 0.15rem 0.35rem; border-radius: 6px; }
+    pre { background: #f6f8fa; padding: .75rem 1rem; border-radius: 12px; overflow: auto; }
+    table { border-collapse: collapse; width: 100%; margin: .5rem 0; }
+    th, td { border: 1px solid #ddd; padding: .5rem; text-align: left; }
+    th { background: #fafafa; }
+  </style>
+</head>
+<body>
+  <p><a href="./index.html">← Back to maps</a></p>
+  <h1>Parameters you can tune</h1>
+  <p>
+    Preferred: edit <code>config.yaml</code>. Quick tests: override with environment variables.
+    Full reference is in <code>PARAMETERS.md</code> in the repo.
+  </p>
+
+  <div class="card">
+    <h2>Most common knobs</h2>
+    <table>
+      <thead>
+        <tr><th>Knob</th><th>Default</th><th>What it changes</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><code>N_RUNS</code></td><td>100</td><td>Monte Carlo iterations (stability confidence)</td></tr>
+        <tr><td><code>TOP_RANKS</code></td><td>2</td><td>What counts as “selected” in Monte Carlo</td></tr>
+        <tr><td><code>NOISE_STD</code></td><td>0.03</td><td>Perturbation level per Monte Carlo run</td></tr>
+        <tr><td><code>OPENSPACE_SHARE_MIN_TO_EXCLUDE</code></td><td>0.60</td><td>How aggressively parks/open-space BGs are excluded</td></tr>
+        <tr><td><code>LAND_SHARE_BG_MIN</code></td><td>0.10</td><td>Water-dominance cutoff (keeps ocean unshaded)</td></tr>
+      </tbody>
+    </table>
+
+    <pre><code># Example: more Monte Carlo + stricter selection
+N_RUNS=300 TOP_RANKS=1 python scripts/GitHubMonteCarlo.py</code></pre>
+  </div>
+
+  <div class="card">
+    <h2>Where to look for the rest</h2>
+    <ul>
+      <li><code>PARAMETERS.md</code> (human-readable defaults + meaning)</li>
+      <li><code>config.yaml</code> (edit in one place)</li>
+      <li>Top of each script: a block of tunables (ClusterMap, MonteCarlo, StressTest)</li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.pyo
+*.pkl
+*.pickle
+*.npz
+*.log
+
+# Environments
+.venv/
+venv/
+ENV/
+.env
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local outputs (keep repo clean)
+outputs/
+!outputs/.gitkeep
+
+# Local configs
+config.local.yaml
